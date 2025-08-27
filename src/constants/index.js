@@ -57,12 +57,14 @@ export const Project = [
     content:
       "The project demonstrates modern web experiences built using 3d models.",
     title: "The Donut hole",
+    link: "https://dharahas-h.github.io/the-donut-hole/",
   },
   {
     imgSrc: "/projects/recommender-system.png",
     content:
       "A tech hunt from college when I was figuring out how Netflix suggests me movies",
     title: "Recommender System",
+    link: "https://github.com/Dharahas-h/Projects/blob/a183cbb982ba143c4bc52c4ac0cc93511a51f567/Recommender%20system/Recommender%20system.ipynb",
   },
 ];
 
