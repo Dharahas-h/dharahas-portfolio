@@ -7,13 +7,14 @@ const Projects = () => {
       <div className="nav-panel-header h1" style={{ alignSelf: "flex-start" }}>
         Projects
       </div>
-      {Project.map(({ imgSrc, content, title }, idx) => {
+      {Project.map(({ imgSrc, content, title, link }, idx) => {
         return (
           <ProjectItem
             key={idx}
             imgSrc={imgSrc}
             content={content}
             title={title}
+            link={link}
           />
         );
       })}
@@ -21,12 +22,12 @@ const Projects = () => {
   );
 };
 
-const ProjectItem = ({ imgSrc, content, title }) => {
+const ProjectItem = ({ imgSrc, content, title, link }) => {
   return (
     <div className="pro-item-container">
-      <div className="pro-img-container">
+      <a className="pro-img-container" href={link} target="_blank">
         <img className="pro-img" src={imgSrc} />
-      </div>
+      </a>
       <ProjectDesc title={title} content={content} />
     </div>
   );
