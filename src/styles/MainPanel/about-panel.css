@@ -1,0 +1,126 @@
+.about-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: 5px;
+  background-color: rgb(53, 52, 48);
+  border-radius: 20px;
+}
+
+.add-testimonial {
+  padding: 14px;
+  align-self: flex-end;
+  background-color: rgb(44, 41, 39);
+  border-radius: 10px;
+}
+
+.about-testimonials {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+}
+
+.about-testimonial-container {
+  display: flex;
+  flex-direction: row;
+  align-self: stretch;
+  margin-top: 30px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  min-width: 0;
+}
+
+@media (max-width: 1160px) {
+  .about-testimonial-container {
+    overflow: scroll;
+    justify-content: center;
+  }
+}
+
+.testimonial-card-image {
+  height: var(--testimonial-image-size);
+  width: var(--testimonial-image-size);
+  border-radius: 20px;
+  background-color: rgb(73, 72, 68);
+  position: absolute;
+  top: 0;
+  left: 100px;
+}
+
+.testimonial-card-item {
+  list-style: none;
+  flex: 0 0 auto;
+  min-width: 0;
+  position: relative;
+  border-radius: 20px;
+}
+
+.testimonial-card-container {
+  height: 175px;
+  width: 420px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 45px;
+  padding: 20px;
+  gap: 20px;
+  background-color: rgb(63, 61, 59);
+  border-radius: 20px;
+}
+
+.testimonial-header {
+  align-self: flex-end;
+  margin-right: 80px;
+}
+
+.testimonial-content {
+  overflow: hidden;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  text-overflow: ellipsis;
+}
+
+.add-testimonial-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: aliceblue;
+}
+
+.h4 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+@media (max-width: 830px) {
+  .testimonial-card-image {
+    left: 40px;
+  }
+  .testimonial-card-container {
+    width: auto;
+    margin: auto;
+    margin-top: 45px;
+    margin-bottom: 45px;
+  }
+}
+
+@media (max-width: 450px) {
+  .testimonial-card-container {
+    margin-top: 30px;
+    height: 150px;
+    gap: 15px;
+  }
+
+  .testimonial-card-image {
+    left: 35px;
+  }
+
+  .testimonial-header {
+    margin-right: 20px;
+  }
+}

@@ -1,0 +1,22 @@
+.nav-panel {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+
+.nav-items-container {
+  display: flex;
+  justify-self: end;
+  list-style-type: none;
+  gap: 30px;
+  margin-right: 30px;
+  padding: 10px 20px 10px 20px;
+  background-color: rgb(32, 30, 28);
+  border-radius: 20px;
+}
+
+.nav-item:hover {
+  cursor: pointer;
+  color: rgb(156, 147, 93);
+  transition: 0.2s ease-in-out;
+}

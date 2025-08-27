@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Responsive Horizontal Scroll Box</title>
+    <style>
+      :root {
+        --bg: #0b1020;
+        --card: #11162a;
+        --text: #e9edf8;
+        --muted: #93a1bd;
+        --accent: #6ea8ff;
+        --ring: #7cc4ff66;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        background: radial-gradient(
+          1000px 50% at 50% -10%,
+          #1c2442 0%,
+          var(--bg) 50%,
+          #080c19 100%
+        );
+        color: var(--text);
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .wrap {
+        width: min(1100px, 100%);
+      }
+
+      .title {
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        margin: 0 0 12px;
+      }
+      .sub {
+        margin: 0 0 16px;
+        color: var(--muted);
+      }
+
+      /* ---------- SCROLLER ---------- */
+      .rail {
+        position: relative;
+        isolation: isolate; /* keep masks above children */
+      }
+
+      .scroll {
+        display: flex;
+        gap: 16px;
+        padding: 12px 8px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch; /* iOS momentum */
+        scrollbar-width: thin;
+        scrollbar-color: #3e5079 transparent;
+        border-radius: 16px;
+      }
+
+      /* Optional: subtle custom scrollbar for WebKit */
+      .scroll::-webkit-scrollbar {
+        height: 10px;
+      }
+      .scroll::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .scroll::-webkit-scrollbar-thumb {
+        background: #334363;
+        border-radius: 999px;
+      }
+
+      .card {
+        flex: 0 0 clamp(180px, 28vw, 260px); /* responsive width */
+        height: 170px;
+        border-radius: 16px;
+        background: linear-gradient(180deg, #182040, var(--card));
+        box-shadow: var(--shadow);
+        padding: 14px;
+        position: relative;
+        scroll-snap-align: start;
+        scroll-margin: 8px; /* align after arrow jumps */
+        outline: none;
+        border: 1px solid #273055;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .card:focus-visible {
+        box-shadow: 0 0 0 4px var(--ring), var(--shadow);
+      }
+
+      .card h3 {
+        margin: 0;
+        font-size: 1rem;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      /* Edge fade masks */
+      .fade {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 2;
+        mask: linear-gradient(
+          to right,
+          transparent 0,
+          black 36px,
+          black calc(100% - 36px),
+          transparent 100%
+        );
+        -webkit-mask: linear-gradient(
+          to right,
+          transparent 0,
+          black 36px,
+          black calc(100% - 36px),
+          transparent 100%
+        );
+        background: linear-gradient(90deg, rgba(8, 12, 25, 1), transparent 40%),
+          linear-gradient(-90deg, rgba(8, 12, 25, 1), transparent 40%);
+        opacity: 0.85;
+      }
+
+      /* Arrow buttons */
+      .arrow {
+        position: absolute;
+        top: 50%;
+        translate: 0 -50%;
+        z-index: 3;
+        border: none;
+        background: rgba(24, 32, 64, 0.7);
+        color: var(--text);
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        box-shadow: var(--shadow);
+        cursor: pointer;
+        backdrop-filter: blur(4px);
+      }
+      .arrow:hover {
+        background: rgba(24, 32, 64, 0.9);
+      }
+      .arrow:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 4px var(--ring), var(--shadow);
+      }
+      .arrow[disabled] {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
+      .left {
+        left: 6px;
+      }
+      .right {
+        right: 6px;
+      }
+
+      /* Make cards taller on larger screens */
+      @media (min-width: 900px) {
+        .card {
+          height: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <h1 class="title">Responsive Horizontal Scroll Box</h1>
+      <p class="sub">
+        Drag, mouse-wheel, swipe, or use the arrows. Items snap neatly and
+        respond to screen size.
+      </p>
+
+      <section class="rail" aria-label="Horizontal item scroller">
+        <button class="arrow left" aria-label="Scroll left" id="btnLeft">
+          &#9664;
+        </button>
+        <button class="arrow right" aria-label="Scroll right" id="btnRight">
+          &#9654;
+        </button>
+
+        <div class="fade" aria-hidden="true"></div>
+
+        <div class="scroll" id="scroller" role="list" tabindex="0">
+          <!-- Example items; duplicate / generate as needed -->
+          <article class="card" role="listitem" tabindex="-1">
+            <h3>Item 1</h3>
+            <p>Short description goes here.</p>
+          </article>
+          <article class="card" role="listitem" tabindex="-1">
+            <h3>Item 2</h3>
+            <p>Short description goes here.</p>
+          </article>
+          <article class="card" role="listitem" tabindex="-1">
+            <h3>Item 3</h3>
+            <p>Short description goes here.</p>
+          </article>
+          <article class="card" role="listitem" tabindex="-1">
+            <h3>Item 4</h3>
+            <p>Short description goes here.</p>
+          </article>
+          <article class="card" role="listitem" tabindex="-1">
+            <h3>Item 5</h3>
+            <p>Short description goes here.</p>
+          </article>
+          <article class="card" role="listitem" tabindex="-1">
+            <h3>Item 6</h3>
+            <p>Short description goes here.</p>
+          </article>
+          <article class="card" role="listitem" tabindex="-1">
+            <h3>Item 7</h3>
+            <p>Short description goes here.</p>
+          </article>
+          <article class="card" role="listitem" tabindex="-1">
+            <h3>Item 8</h3>
+            <p>Short description goes here.</p>
+          </article>
+          <article class="card" role="listitem" tabindex="-1">
+            <h3>Item 9</h3>
+            <p>Short description goes here.</p>
+          </article>
+          <article class="card" role="listitem" tabindex="-1">
+            <h3>Item 10</h3>
+            <p>Short description goes here.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const scroller = document.getElementById("scroller");
+      const btnLeft = document.getElementById("btnLeft");
+      const btnRight = document.getElementById("btnRight");
+
+      // amount to scroll equals one full card + gap
+      const getStep = () => {
+        const firstCard = scroller.querySelector(".card");
+        if (!firstCard) return 300;
+        const style = getComputedStyle(scroller);
+        const gap = parseFloat(style.columnGap || style.gap || 16);
+        return firstCard.getBoundingClientRect().width + gap;
+      };
+
+      function updateArrows() {
+        const max = scroller.scrollWidth - scroller.clientWidth - 1; // tolerance
+        btnLeft.disabled = scroller.scrollLeft <= 0;
+        btnRight.disabled = scroller.scrollLeft >= max;
+      }
+
+      btnLeft.addEventListener("click", () =>
+        scroller.scrollBy({ left: -getStep(), behavior: "smooth" })
+      );
+      btnRight.addEventListener("click", () =>
+        scroller.scrollBy({ left: getStep(), behavior: "smooth" })
+      );
+      scroller.addEventListener("scroll", updateArrows, { passive: true });
+      addEventListener("resize", updateArrows);
+      updateArrows();
+
+      // Enable horizontal wheel (shift not required)
+      scroller.addEventListener(
+        "wheel",
+        (e) => {
+          if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
+            scroller.scrollLeft += e.deltaY;
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+
+      // Click-drag to scroll for desktop
+      let dragging = false,
+        startX = 0,
+        startLeft = 0;
+      scroller.addEventListener("pointerdown", (e) => {
+        dragging = true;
+        startX = e.clientX;
+        startLeft = scroller.scrollLeft;
+        scroller.setPointerCapture(e.pointerId);
+        scroller.style.cursor = "grabbing";
+      });
+      scroller.addEventListener("pointermove", (e) => {
+        if (!dragging) return;
+        scroller.scrollLeft = startLeft - (e.clientX - startX);
+      });
+      scroller.addEventListener("pointerup", (e) => {
+        dragging = false;
+        scroller.releasePointerCapture(e.pointerId);
+        scroller.style.cursor = "auto";
+      });
+
+      // Keyboard support: left/right arrows when scroller is focused
+      scroller.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          scroller.scrollBy({ left: getStep(), behavior: "smooth" });
+          e.preventDefault();
+        }
+        if (e.key === "ArrowLeft") {
+          scroller.scrollBy({ left: -getStep(), behavior: "smooth" });
+          e.preventDefault();
+        }
+      });
+    </script>
+  </body>
+</html>
