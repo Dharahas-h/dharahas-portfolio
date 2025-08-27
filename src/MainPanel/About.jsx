@@ -28,7 +28,7 @@ const About = () => {
           convincing myself not to deploy on a Friday.
         </p>
       </div>
-      <div className="about-testimonials">
+      {/* <div className="about-testimonials">
         <div className="h3">
           <span>Testimonials</span>
         </div>
@@ -38,7 +38,7 @@ const About = () => {
           <TestimonialCard />
         </div>
         <div className="add-testimonial text-content">Add Testimonial</div>
-      </div>
+      </div> */}
     </div>
   );
 };
