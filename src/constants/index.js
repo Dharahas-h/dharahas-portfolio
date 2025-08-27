@@ -1,3 +1,5 @@
+export const basePath = "/dharahas-portfolio";
+
 export const WiseTechGlobal = {
   points: [
     `Participated in a 9-month rotation program across three distinct enterprise-level engineering teams
@@ -53,14 +55,14 @@ stakeholders to translate business challenges into analytical and technical solu
 
 export const Project = [
   {
-    imgSrc: "/projects/the-donut-hole.png",
+    imgSrc: `${basePath}/projects/the-donut-hole.png`,
     content:
       "The project demonstrates modern web experiences built using 3d models.",
     title: "The Donut hole",
     link: "https://dharahas-h.github.io/the-donut-hole/",
   },
   {
-    imgSrc: "/projects/recommender-system.png",
+    imgSrc: `${basePath}/projects/recommender-system.png`,
     content:
       "A tech hunt from college when I was figuring out how Netflix suggests me movies",
     title: "Recommender System",
