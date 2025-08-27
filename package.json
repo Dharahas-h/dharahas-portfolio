@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "homepage": "https://dharahas-h.github.io/dharahas-portfolio/",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
