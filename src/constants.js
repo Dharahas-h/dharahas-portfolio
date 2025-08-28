@@ -63,10 +63,9 @@ export const Project = [
   },
   {
     imgSrc: `${basePath}/projects/recommender-system.png`,
-    content:
-      "A tech hunt from college when I was figuring out how Netflix suggests me movies",
-    title: "Recommender System",
-    link: "https://github.com/Dharahas-h/Projects/blob/a183cbb982ba143c4bc52c4ac0cc93511a51f567/Recommender%20system/Recommender%20system.ipynb",
+    content: "The projects/assignments I've worked on in my CS courses",
+    title: "ML Projects",
+    link: "https://github.com/Dharahas-h/Projects",
   },
 ];
 
