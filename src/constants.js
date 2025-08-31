@@ -68,7 +68,7 @@ export const Project = [
     link: "https://github.com/Dharahas-h/Projects",
   },
   {
-    imgSrc: `${basePath}/projects/whatsapp-gpt.png`,
+    imgSrc: `${basePath}/projects/whatapp-gpt.png`,
     content:
       "WhatsApp bot that uses OpenAI to answer questions, used webhooks to respond to messages.",
     title: "WhatsApp-GPT",
