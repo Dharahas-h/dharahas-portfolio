@@ -82,3 +82,7 @@ export const page = {
   PROJECTS: "Projects",
   NONE: -1,
 };
+
+export const IPInfo = "6222199d731d07";
+export const googleScriptURL =
+  "https://script.google.com/macros/s/AKfycbysDLyXQtNyeQf20863l4vN4ReRV5AKDJvrwMwtefWCo_fCWtf-zLyaXOGAf7cby6j6/exec";
