@@ -47,6 +47,13 @@
   text-align: left;
   align-content: center;
   flex-grow: 1;
+  color: white;
+  text-decoration: none;
+}
+
+.detail-container:link {
+  color: white;
+  text-decoration: none;
 }
 
 @media (max-width: 1160px) {

@@ -1,8 +1,8 @@
-const ContactCard = ({ imageSrc, text }) => {
+const ContactCard = ({ imageSrc, text, link }) => {
   return (
     <div className="contact-card-container">
       <IconContainer src={imageSrc} />
-      <DetailContainer text={text} />
+      <DetailContainer text={text} link={link} />
     </div>
   );
 };
@@ -15,8 +15,14 @@ const IconContainer = ({ src }) => {
   );
 };
 
-const DetailContainer = ({ text }) => {
-  return <div className="detail-container h4">{text}</div>;
+const DetailContainer = ({ text, link }) => {
+  return link ? (
+    <a className="detail-container h4" href={link} target="_blank">
+      {text}
+    </a>
+  ) : (
+    <div className="detail-container h4">{text}</div>
+  );
 };
 
 export default ContactCard;
