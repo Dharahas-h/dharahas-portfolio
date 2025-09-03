@@ -21,6 +21,7 @@ const SidePanel = () => {
         <ContactCard
           imageSrc={`${basePath}/icons/linkedin-brands-solid-full.svg`}
           text={"linkdin"}
+          link={"https://www.linkedin.com/in/dharahas-h-86b50230b/"}
         />
       </div>
       <hr className="line-break" />
