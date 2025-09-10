@@ -26,7 +26,7 @@ const Exp = ({ experience }) => {
 
 const Header = ({ name, position }) => {
   return (
-    <div className="header-container">
+    <div className="header-container" onClick={toggleExperience}>
       <div className="h2">
         <span>{name}</span>
       </div>
@@ -39,6 +39,10 @@ const Header = ({ name, position }) => {
 
 const Point = ({ text }) => {
   return <div className="point">{text}</div>;
+};
+
+const toggleExperience = (e) => {
+  e.currentTarget.nextElementSibling.classList.toggle("show");
 };
 
 export default Experience;
