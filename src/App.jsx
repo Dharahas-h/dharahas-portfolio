@@ -1,18 +1,16 @@
-import { useEffect } from "react";
 import MainPanel from "./MainPanel";
 import SidePanel from "./SidePanel";
-import useVisitorInfo from "./Hooks/visitorInfo";
-import { notifyVisitation } from "./Service/NotificationService";
 
 const App = () => {
-  const visitor = useVisitorInfo();
+  // const visitor = useVisitorInfo();
 
-  useEffect(() => {
-    if (visitor) {
-      console.log("Notifying visitation...");
-      notifyVisitation(visitor);
-    }
-  }, [visitor]);
+  // disabled temporarily
+  // useEffect(() => {
+  //   if (visitor) {
+  //     console.log("Notifying visitation...");
+  //     notifyVisitation(visitor);
+  //   }
+  // }, [visitor]);
 
   return (
     <div className="main-container">
